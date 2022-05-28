@@ -1,0 +1,237 @@
+[
+    {
+        "id": "07bb7d28a8d4df99",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5fa2fe1555e5da7e",
+        "type": "serial in",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "serial": "251670d6fb12e5fb",
+        "x": 70,
+        "y": 120,
+        "wires": [
+            [
+                "a32c9a681d5507f4"
+            ]
+        ]
+    },
+    {
+        "id": "376cda97e140780b",
+        "type": "ui_chart",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "group": "492e499fd2ff6177",
+        "order": 0,
+        "width": "11",
+        "height": "4",
+        "label": "Humedad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d65504b313051d8",
+        "type": "ui_chart",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "group": "492e499fd2ff6177",
+        "order": 1,
+        "width": "11",
+        "height": "4",
+        "label": "Termperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a32c9a681d5507f4",
+        "type": "split",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "splt": ",",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 230,
+        "y": 240,
+        "wires": [
+            [
+                "0428e0579c3fb23f"
+            ]
+        ]
+    },
+    {
+        "id": "0428e0579c3fb23f",
+        "type": "switch",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "3256052cd13fceb7",
+                "376cda97e140780b"
+            ],
+            [
+                "23de9a6067796442",
+                "9d65504b313051d8"
+            ]
+        ]
+    },
+    {
+        "id": "3256052cd13fceb7",
+        "type": "debug",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "23de9a6067796442",
+        "type": "debug",
+        "z": "07bb7d28a8d4df99",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "251670d6fb12e5fb",
+        "type": "serial-port",
+        "serialport": "COM9",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "492e499fd2ff6177",
+        "type": "ui_group",
+        "name": "Sensores 🌤️",
+        "tab": "8300ad207e76afb3",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8300ad207e76afb3",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
